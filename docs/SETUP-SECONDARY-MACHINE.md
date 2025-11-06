@@ -327,7 +327,8 @@ Your secondary machine is now configured identically to your primary machine. Al
 ---
 
 **Questions?** Check the main documentation:
-- `docs/SETUP-SECRETS.md` - Complete setup guide
+- `docs/QUICK-SETUP-MACHINE-2.md` - Quick 5-minute setup
+- `docs/SETUP-SECRETS.md` - Complete setup guide  
 - `docs/KEY-MANAGEMENT.md` - Secret management reference
 - `README.md` - Project overview
 

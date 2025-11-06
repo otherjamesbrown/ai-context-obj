@@ -42,4 +42,4 @@ cat .env | head      # Should show secrets
 
 Your second machine is ready. Secrets are identical to Machine 1.
 
-**Full guide:** See `docs/SETUP-SECONDARY-MACHINE.md`
+**Full guide:** See `SETUP-SECONDARY-MACHINE.md` (in this directory)
