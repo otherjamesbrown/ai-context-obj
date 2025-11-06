@@ -1,0 +1,94 @@
+# Cursor AI Assistant Rules for IAS Project
+
+## File Organization Rules
+
+### Root Directory - ONLY These Files Allowed:
+- `README.md` - Project overview (required by GitHub)
+- `GETTING-STARTED.md` - Essential first-time setup guide
+- `VERSIONING-GUIDE.md` - Project-wide versioning guide
+- Standard config files: `.gitignore`, `.gitattributes`, `.env.example`, `docker-compose.yml`, `Makefile`
+- CI/CD configs: `.github/`, `.gitlab-ci.yml` (if used)
+
+### DO NOT Create in Root:
+❌ Setup guides → Use `docs/` or `setup/`
+❌ Reference docs → Use `docs/`
+❌ Feature docs → Use `docs/`
+❌ Temporary guides → Use `setup/` (gitignored)
+❌ How-to guides → Use `docs/`
+
+### Correct File Placement:
+
+**Documentation:**
+- Setup guides → `docs/SETUP-*.md`
+- Reference manuals → `docs/*-REFERENCE.md` or `docs/*-GUIDE.md`
+- Architecture docs → `docs/architecture/`
+- API docs → `docs/api/`
+
+**Temporary Files:**
+- Setup wizards → `setup/` (gitignored)
+- Generated files → `tmp/` or `temp/` (gitignored)
+
+**Specifications:**
+- Feature specs → `specs/NNN-feature-name/spec.md`
+- Contracts → `specs/NNN-feature-name/contracts/`
+
+**Source Code:**
+- Go services → `services/service-name/`
+- Web portal → `web/` or `frontend/`
+- CLI → `cli/`
+- Shared libs → `pkg/`
+
+## Code Generation Rules
+
+### Go Code (Backend Services):
+- Use Go 1.21+
+- Standard library + chi/gorilla for routing
+- No heavy frameworks (no Gin, no Echo)
+- All services must be stateless
+- Follow microservices architecture from constitution.md
+
+### Database:
+- PostgreSQL only (with TimescaleDB for analytics)
+- Use golang-migrate for migrations
+- No mocks in database tests - use Testcontainers
+
+### Testing:
+- Unit tests: >80% coverage for business logic
+- Integration tests: Use Testcontainers (no mocks)
+- E2E tests: Against real deployed services
+
+## Architecture Compliance
+
+Always check `memory/constitution.md` for:
+- Technology stack (non-negotiable)
+- API standards
+- Security requirements
+- Testing philosophy
+
+## Git Workflow
+
+- Trunk-based development (main branch only)
+- Squash-merge to main
+- Conventional commits: `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`
+
+## Security
+
+- Never commit secrets (`.env` is gitignored)
+- API keys must be SHA-256 hashed
+- Passwords must be bcrypt hashed
+- All endpoints must have authentication + RBAC
+
+## Documentation
+
+- Update specs when adding features
+- Update constitution.md for architectural changes
+- Keep README.md current
+- Version all significant changes (see VERSIONING-GUIDE.md)
+
+## When Unsure
+
+1. Check `memory/constitution.md` for architecture decisions
+2. Check `specs/` for feature specifications
+3. Check `docs/` for setup/reference guides
+4. Ask the user before creating files in root directory
+
