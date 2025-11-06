@@ -129,6 +129,9 @@ tmp/
 temp/
 *.tmp
 
+# Setup directory (temporary setup files)
+setup/
+
 # ============================================
 # CI/CD & Deployment
 # ============================================
