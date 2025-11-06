@@ -1,2 +1,31 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Inference-as-a-Service - Git Attributes
+# Helps prevent secrets from being committed
+
+# Mark files that may contain secrets
+*.env filter=git-crypt diff=git-crypt
+*.secret filter=git-crypt diff=git-crypt
+*.key filter=git-crypt diff=git-crypt
+*.pem filter=git-crypt diff=git-crypt
+
+# Binary files
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Text files (enforce LF line endings)
+*.go text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.jsx text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.sh text eol=lf
+*.sql text eol=lf
+
+# Shell scripts should be executable
+*.sh text eol=lf
+Makefile text eol=lf

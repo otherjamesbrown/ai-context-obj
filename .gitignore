@@ -1,0 +1,214 @@
+# Inference-as-a-Service - Git Ignore File
+# Prevents accidental commit of secrets and sensitive files
+
+# ============================================
+# SECRETS & CREDENTIALS (CRITICAL)
+# ============================================
+
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+.env.development
+*.env
+
+# EXCEPT: Example files are OK to commit
+!.env.example
+!*.env.example
+
+# Secret files
+secrets/
+*.secret
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Kubernetes secrets (local copies)
+k8s-secrets/
+*-secret.yaml
+*secret*.yaml
+
+# Terraform sensitive outputs
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.tfvars.json
+.terraform/
+.terraform.lock.hcl
+override.tf
+override.tf.json
+
+# Configuration files with credentials
+config.yaml
+config.json
+*-config.yaml
+*-config.json
+kubeconfig
+kubeconfig.*
+
+# API keys and tokens
+*.token
+*.apikey
+api-keys.txt
+
+# Database dumps (may contain sensitive data)
+*.sql
+*.dump
+*.backup
+
+# ============================================
+# Development Tools
+# ============================================
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+
+# Go
+vendor/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+go.work.sum
+
+# Node.js (for web portal)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+build/
+
+# Python (for test harness)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+ENV/
+*.egg-info/
+.pytest_cache/
+
+# Docker
+.docker/
+*.log
+
+# ============================================
+# Build & Test Artifacts
+# ============================================
+
+# Compiled binaries
+bin/
+*.bin
+
+# Test coverage
+coverage.out
+*.coverprofile
+htmlcov/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# ============================================
+# CI/CD & Deployment
+# ============================================
+
+# Helm charts (local overrides with secrets)
+*-values.local.yaml
+*-values.dev.yaml
+helm-secrets.yaml
+
+# ArgoCD application overrides (local)
+argo-*.local.yaml
+
+# ============================================
+# Documentation (temporary)
+# ============================================
+
+# Generated docs
+docs/_build/
+site/
+
+# ============================================
+# OS-Specific
+# ============================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+
+# ============================================
+# Project-Specific Patterns
+# ============================================
+
+# Local development overrides
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Migration scripts with data
+migrations/*-seed-production.sql
+
+# Test data with PII
+testdata/*-production-*.json
+
+# Local SSL certificates
+certs/
+*.crt
+*.key
+*.csr
+*.cert
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# ============================================
+# SAFETY NET: Catch common secret patterns
+# ============================================
+
+# Anything with "secret" in the name (except .secret.example)
+*secret*
+!*.secret.example
+!*secret*.md
+!docs/*secret*
+
+# Anything with "private" in the name
+*private*
+!*private*.md
+
+# Anything with "credential" in the name
+*credential*
+!*credential*.md
+
